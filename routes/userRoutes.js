@@ -1,7 +1,7 @@
 import findOrders from '../controllers/findOrders.js'
 import deleteOrder from '../controllers/deleteOrder.js'
 import updateSeller from '../controllers/updateSeller.js'
-import authMiddleware from '../middlewares/basicAuth.js'
+import authMiddleware from '../helpers/basicAuth.js'
 import { Router } from 'express'
 
 const router = Router()
