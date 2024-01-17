@@ -1,15 +1,15 @@
-import findOrders from '../controllers/findOrders.js'
-import deleteOrder from '../controllers/deleteOrder.js'
-import updateSeller from '../controllers/updateSeller.js'
-import authMiddleware from '../helpers/basicAuth.js'
-import { Router } from 'express'
+import { Router } from "express";
+import passport from '../middlewares/passport/index.js';
+import authController from "../controllers/authController/index.js";
 
-const router = Router()
 
-router.get('/order_items', authMiddleware, findOrders)
+const router = Router();
 
-router.delete('/order_items/:id', authMiddleware, deleteOrder)
+router.post('/signup', authController.signup)
 
-router.put('/account', authMiddleware, updateSeller)
+router.post('/login', passport.authenticate('local'), authController.login)
 
-export default router
+router.post('/logout', authController.logout)
+
+
+export default router;
